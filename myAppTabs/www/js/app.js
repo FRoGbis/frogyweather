@@ -41,40 +41,40 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
-    url: '/dash',
+    url: '/files',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-files': {
+        templateUrl: 'templates/tab-files.html',
+        controller: 'FilesCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.upload', {
+      url: '/upload',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-upload': {
+          templateUrl: 'templates/tab-upload.html',
+          controller: 'UploadsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+//    .state('tab.chat-detail', {
+//      url: '/chats/:chatId',
+//      views: {
+//        'tab-chats': {
+//          templateUrl: 'templates/chat-detail.html',
+//          controller: 'ChatDetailCtrl'
+//        }
+//      }
+ //   })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.delete', {
+    url: '/delete',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-delete': {
+        templateUrl: 'templates/tab-delete.html',
+        controller: 'DeleteCtrl'
       }
     }
   });
