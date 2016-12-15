@@ -3,5 +3,10 @@
     <button class="button button-block button-assertive">
       Delete a file
     </button>
+    <br><br>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="file in files" type="item-text-wrap" href="#/tab/files/{{file.name}}">
+        <b>{{file.name}}</b>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
