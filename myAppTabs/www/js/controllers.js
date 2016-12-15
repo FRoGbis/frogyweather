@@ -4,6 +4,10 @@ angular.module('starter.controllers', [])
   $scope.files = File.get();
 })
 
-.controller('UploadsCtrl', function($scope) {})
+.controller('UploadsCtrl', function($scope, File) {
+  $scope.files = File.get();
+})
 
-.controller('DeleteCtrl', function($scope) {})
+.controller('DeleteCtrl', function($scope, File) {
+  $scope.files = File.get();
+})
