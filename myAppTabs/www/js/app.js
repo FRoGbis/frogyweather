@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','starter.controllers', 'starter.services', "highcharts-ng"])
+angular.module('starter', ['ionic','starter.controllers', 'starter.services', "highcharts-ng", "starter.service_graph"])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -61,9 +61,9 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', "h
   })*/
 
             .state('tab.graph', {
-            url: '/graphs/:fileName/:dataType',
+            url: '/files/:fileName/graphs/:dataType',
             views: {
-              'tab-graphs': {
+              'tab-files': {
                 templateUrl: 'templates/graphs.html',
                 controller: 'GraphsCtrl'
               }
