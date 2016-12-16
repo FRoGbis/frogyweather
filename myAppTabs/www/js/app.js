@@ -50,6 +50,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.graph', {
+    url: '/graph',
+    views: {
+      'tab-graph': {
+        templateUrl: 'templates/tab-graphique.html',
+        controller: 'GraphCtrl'
+      }
+    }
+  })
+
   .state('tab.upload', {
       url: '/upload',
       views: {

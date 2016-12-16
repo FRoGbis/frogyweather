@@ -1,16 +1,13 @@
-angular.module('starter.controllers', [])
+angular.module('starter.services', [])
 
-.controller('FilesCtrl', function($scope, File) {
-  $scope.files = File.get();
-})
 
-.controller('GraphCtrl', function($scope) {
     Highcharts.chart('container', {
         title: {
-            text: 'Temperature moyenne sur un mois',
+            text: 'Monthly Average Temperature',
             x: -20 //center
         },
         subtitle: {
+            text: 'Source: WorldClimate.com',
             x: -20
         },
         xAxis: {
@@ -50,29 +47,3 @@ angular.module('starter.controllers', [])
             data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
     });
-})
-
-.controller('UploadsCtrl', function($scope, File) {
-  $scope.files = File.get();
-})
-
-.controller('DeleteCtrl', function($scope, File) {
-  $scope.files = File.get();
-})
-/*
-.controller('FileRecapCtrl', function($scope, $stateParams, $http, Parse, Calcul) {
-  $http.get('files/'+$stateParams.fileName+'.his').success(function(data) {
-    var columns = Parse.columns(data);
-    var datas = Parse.lines(data, columns);
-    columns = Calcul.average(datas, columns);
-    columns = Calcul.min(datas, columns);
-    columns = Calcul.max(datas, columns);
-
-    $scope.file = {name: $stateParams.fileName, data: columns};
-    console.log(datas);
-    console.log(columns);
-  }).
-  error(function() {
-    $scope.file = {name: "", data:"Error with file"};
-  });
-  */
