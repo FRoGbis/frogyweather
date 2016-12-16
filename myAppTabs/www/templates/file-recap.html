@@ -1,0 +1,22 @@
+<ion-view view-title="{{file.name}}">
+  <ion-content class="padding">
+	  <div class="row">
+		  <div class="col"></div>
+		  <div class="col">Nom de l'analyse</div>
+		  <div class="col">Min</div>
+		  <div class="col">Heure du Min</div>
+		  <div class="col">Moyenne de la journée</div>
+		  <div class="col">Max</div>
+		  <div class="col">Heure du Max</div>
+	  </div>
+	  <div class="row" ng-repeat="table_line in file.data">
+		  <!-- <div class="col"><a class="button button-icon icon ion-pie-graph" href="#/tab/graphs/{{file.name}}/{{table_line.name}}"></a></div> -->
+		  <div class="col">{{table_line.name}}</div>
+		  <div class="col">{{table_line.min}}</div>
+		  <div class="col">{{table_line.hour_min}}</div>
+		  <div class="col">{{table_line.average}}</div>
+		  <div class="col">{{table_line.max}}</div>
+		  <div class="col">{{table_line.hour_max}}</div>
+	  </div>
+  </ion-content>
+</ion-view>

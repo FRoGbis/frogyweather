@@ -59,16 +59,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-//    .state('tab.chat-detail', {
-//      url: '/chats/:chatId',
-//      views: {
-//        'tab-chats': {
-//          templateUrl: 'templates/chat-detail.html',
-//          controller: 'ChatDetailCtrl'
-//        }
-//      }
- //   })
-
+/*
+  .state('tab.file-recap', {
+    url: '/files/:fileName',
+    views: {
+      'tab-files': {
+        templateUrl: 'templates/file-recap.html',
+        controller: 'FileRecapCtrl'
+      }
+    }
+  })
+*/
   .state('tab.delete', {
     url: '/delete',
     views: {
@@ -80,6 +81,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/files');
 
 });
