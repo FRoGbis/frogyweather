@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic','starter.controllers', 'starter.services', "highcharts-ng"])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -50,15 +50,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.graph', {
-    url: '/graph',
+ /* .state('tab.graphs', {
+    url: '/graphs',
     views: {
-      'tab-graph': {
-        templateUrl: 'templates/tab-graphique.html',
-        controller: 'GraphCtrl'
+      'tab-graphs': {
+        templateUrl: 'templates/graphs.html',
+        controller: 'GraphsCtrl'
       }
     }
-  })
+  })*/
+
+            .state('tab.graph', {
+            url: '/graphs/:fileName/:dataType',
+            views: {
+              'tab-graphs': {
+                templateUrl: 'templates/graphs.html',
+                controller: 'GraphsCtrl'
+              }
+            }
+          })
 
   .state('tab.upload', {
       url: '/upload',
@@ -69,17 +79,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-/*
-  .state('tab.file-recap', {
-    url: '/files/:fileName',
-    views: {
-      'tab-files': {
-        templateUrl: 'templates/file-recap.html',
-        controller: 'FileRecapCtrl'
-      }
-    }
-  })
-*/
+
   .state('tab.delete', {
     url: '/delete',
     views: {
@@ -88,9 +88,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'DeleteCtrl'
       }
     }
-  });
+  })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/files');
+
+
+          .state('tab.file-details', {
+            url: '/files/:fileName',
+            views: {
+              'tab-files': {
+                templateUrl: 'templates/file-details.html',
+                controller: 'FileDetailsCtrl'
+              }
+            }
+          })
+
+
+            $urlRouterProvider.otherwise('/tab/files');
 
 });

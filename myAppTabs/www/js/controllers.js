@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   $scope.files = File.get();
 })
 
-.controller('GraphCtrl', function($scope) {
+/* .controller('GraphsCtrl', function($scope) {
     Highcharts.chart('container', {
         title: {
             text: 'Temperature moyenne sur un mois',
@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
             data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
     });
-})
+}) */
 
 .controller('UploadsCtrl', function($scope, File) {
   $scope.files = File.get();
@@ -59,20 +59,41 @@ angular.module('starter.controllers', [])
 .controller('DeleteCtrl', function($scope, File) {
   $scope.files = File.get();
 })
-/*
-.controller('FileRecapCtrl', function($scope, $stateParams, $http, Parse, Calcul) {
-  $http.get('files/'+$stateParams.fileName+'.his').success(function(data) {
-    var columns = Parse.columns(data);
-    var datas = Parse.lines(data, columns);
-    columns = Calcul.average(datas, columns);
-    columns = Calcul.min(datas, columns);
-    columns = Calcul.max(datas, columns);
+  //  .controller('UploadCtrl', function($scope) { })
+    .controller('FileDetailsCtrl', function($scope, $stateParams, $http, Parse, Calcul) {
+      $http.get('files/'+$stateParams.fileName+'.his').success(function(data) {
+        var columns = Parse.columns(data);
+        var datas = Parse.lines(data, columns);
+        columns = Calcul.average(datas, columns);
+        columns = Calcul.min(datas, columns);
+        columns = Calcul.max(datas, columns);
 
-    $scope.file = {name: $stateParams.fileName, data: columns};
-    console.log(datas);
-    console.log(columns);
-  }).
-  error(function() {
-    $scope.file = {name: "", data:"Error with file"};
-  });
-  */
+        $scope.file = {name: $stateParams.fileName, data: columns};
+        console.log(datas);
+        console.log(columns);
+      }).
+      error(function() {
+        $scope.file = {name: "", data:"Error with file"};
+      });
+
+    })
+   // .controller('RemoveCtrl', function($scope) {})
+    .controller('GraphsCtrl', function($scope, Graphs) {
+      $scope.chartSeries = Graphs.getSeries();
+      $scope.chartConfig = Graphs.getConfig();
+
+      $scope.addPoints = Graphs.addPoints();
+
+      $scope.addSeries = Graphs.addSeries();
+
+      $scope.removeRandomSeries = Graphs.removeRandomSeries();
+
+      $scope.removeSeries = function (id) {
+        var seriesArray = $scope.chartConfig.series;
+        seriesArray.splice(id, 1)
+      }
+
+      $scope.toggleHighCharts = function () {
+        this.chartConfig.useHighStocks = !this.chartConfig.useHighStocks
+      }
+    });

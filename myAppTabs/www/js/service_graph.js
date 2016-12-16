@@ -1,6 +1,64 @@
 angular.module('starter.services', [])
 
+    .factory('Graphs', function() {
+        var chartSeries = [
+            {"name": "Température moyenne", "data": [3, 1, null, 5, 2], connectNulls: true}
+        ];
 
+        var chartConfig = {
+            options: {
+                chart: {
+                    type: 'line'
+                },
+                plotOptions: {
+                    series: {
+                        stacking: ''
+                    }
+                }
+            },
+            series: chartSeries,
+            title: {
+                text: 'Moyenne par heure'
+            },
+            loading: false,
+            size: {}
+        };
+
+        return {
+            getConfig: function () {
+              return chartConfig;
+            },
+
+            getSeries: function () {
+                return chartSeries;
+            },
+
+            addPoints: function () {
+                var seriesArray = chartConfig.series;
+                var rndIdx = Math.floor(Math.random() * seriesArray.length);
+                seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
+            },
+
+            addSeries: function () {
+                var rnd = [];
+                for (var i = 0; i < 10; i++) {
+                    rnd.push(Math.floor(Math.random() * 20) + 1)
+                }
+                chartConfig.series.push({
+                    data: rnd
+                })
+            },
+
+            removeRandomSeries: function () {
+                var seriesArray = chartConfig.series;
+                var rndIdx = Math.floor(Math.random() * seriesArray.length);
+                seriesArray.splice(rndIdx, 1)
+            }
+        };
+
+
+
+/*
     Highcharts.chart('container', {
         title: {
             text: 'Monthly Average Temperature',
@@ -46,4 +104,6 @@ angular.module('starter.services', [])
             name: 'London',
             data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
-    });
+
+
+    });*/
